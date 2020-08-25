@@ -19,9 +19,10 @@ import os
 # print(dotenv_path)
 
 # database file
+engine = create_engine(getenv('DATABASE_URL'))
+
 # DATABASE_URL = "postgres://rrjsotrn:bcLxGv5Ukb0PKwPQjFxA7J99eHvImioH@lallah.db.elephantsql.com:5432/rrjsotrn"
-# engine = create_engine(getenv('DATABASE_URL'))
-engine = create_engine(DATABASE_URL)
+# engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
 Base.metadata.create_all(bind=engine)
