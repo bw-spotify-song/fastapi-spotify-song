@@ -15,20 +15,20 @@ class Song(BaseModel):
     """Use this data model to parse the request body JSON."""
     # song_id: UUID,
     x1: float = Field(..., example=3.14)
-    # artist_name: str = Field(..., example='Chris Cooq')
-    # track_name: str = Field(..., example='Lactose')
-    # acousticness: float = Field(..., example=0.029400)
-    # energy: float = Field(..., example=0.579)
+    artist_name: str = Field(..., example='Chris Cooq')
+    track_name: str = Field(..., example='Lactose')
+    acousticness: float = Field(..., example=0.029400)
+    energy: float = Field(..., example=0.579)
 
-    # def to_df(self):
-    #     """Convert pydantic object to pandas dataframe with 1 row."""
-    #     return pd.DataFrame([dict(self)])
-    #
-    # @validator('x1')
-    # def x1_must_be_positive(cls, value):
-    #     """Validate that x1 is a positive number."""
-    #     assert value > 0, f'x1 == {value}, must be > 0'
-    #     return value
+    def to_df(self):
+        """Convert pydantic object to pandas dataframe with 1 row."""
+        return pd.DataFrame([dict(self)])
+
+    @validator('x1')
+    def x1_must_be_positive(cls, value):
+        """Validate that x1 is a positive number."""
+        assert value > 0, f'x1 == {value}, must be > 0'
+        return value
 
     # @validator('track_name')
     # def check_string(cls, value):
