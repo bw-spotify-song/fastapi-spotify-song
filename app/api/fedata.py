@@ -29,8 +29,8 @@ class Song(BaseModel):
         orm_mode = True
 
 
-def to_df(self):
+def to_df(song: Song):
     """Convert pydantic object to pandas dataframe with 1 row."""
-    return pd.DataFrame([dict(self)])
+    return pd.DataFrame([dict(song)])
 
 

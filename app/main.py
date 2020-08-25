@@ -17,6 +17,8 @@ app = FastAPI(
     docs_url='/',
 )
 
+db_url = getenv('DATABASE_URL')
+
 
 @app.get("/")
 def root():
@@ -38,7 +40,7 @@ app.add_middleware(
 @app.get("/Database")
 def db_reload():
     """
-    Reload the database from spotify_music.csv file
+    Reset, Reload the database from spotify_music.csv file
     """
     reset_db(engine)
     db = get_db()
