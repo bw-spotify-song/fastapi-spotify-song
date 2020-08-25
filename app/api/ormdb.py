@@ -7,10 +7,20 @@ import csv
 import datetime
 import psycopg2
 from os import getenv
+import os
+# from ..main import db_url
+# from dotenv import load_dotenv
+# from os.path import join, dirname
 
+
+# dotenv_path = join(dirname(__file__), '.env')
+# load_dotenv(dotenv_path)
+# SECRET_KEY = os.environ.get("SECRET_KEY")
+# print(dotenv_path)
 
 # database file
 DATABASE_URL = "postgres://rrjsotrn:bcLxGv5Ukb0PKwPQjFxA7J99eHvImioH@lallah.db.elephantsql.com:5432/rrjsotrn"
+# engine = create_engine(getenv('DATABASE_URL'))
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()

@@ -38,7 +38,7 @@ async def predict(song: Song):
     Replace the placeholder docstring and fake predictions with your own model.
     """
 
-    X_new = song.to_df()
+    X_new = to_df(song)
     log.info(X_new)
     y_pred = random.choice([True, False])
     y_pred_proba = random.random() / 2 + 0.5
