@@ -20,6 +20,8 @@ sqlalchemy = "*"
 psycopg2-binary = "*"
 python-dotenv = "*"
 spotipy = "*"
+joblib = "*"
+sklearn = "*"
 
 [requires]
 python_version = "3.7"
