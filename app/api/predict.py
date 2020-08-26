@@ -38,14 +38,12 @@ async def predict(id):
         new_obs = neighbors[1][0][6:20]
         return list(new_df.loc[new_obs, 'id'])
 
-    id1 = '4KuFgXbahxEILwg8qu1kKG'
-
     # id1 = '4KuFgXbahxEILwg8qu1kKG'
     # id1 = [-1,'73LY41HCJzlQwoNBmWM7Md']
     # id1 = id1.reshape(1,-1)
 
 
-    tracks = predict_model(track_id= id1, new_df=df)
+    tracks = predict_model(track_id= id, new_df=df)
     return {
          'Suggested track IDs': tracks
          }
