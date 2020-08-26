@@ -1,14 +1,10 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-# from fastapi import Depends
-
 import uvicorn
 from typing import List, Optional
-
-from .api.predict import Song
 from .api.ormdb import *
-from .api.fedata import *
-from app.api import predict, viz
+from .api.fedata import Song
+from .api import predict, viz, spotify
 
 app = FastAPI(
     title='Spotify song API',
@@ -17,16 +13,10 @@ app = FastAPI(
     docs_url='/',
 )
 
-db_url = getenv('DATABASE_URL')
-
-
-@app.get("/")
-def root():
-    return
-
 
 app.include_router(predict.router)
 app.include_router(viz.router)
+app.include_router(spotify.router)
 
 app.add_middleware(
     CORSMiddleware,
@@ -35,6 +25,10 @@ app.add_middleware(
     allow_methods=['*'],
     allow_headers=['*'],
 )
+
+@app.get("/")
+def root():
+    return
 
 
 @app.get("/Database")

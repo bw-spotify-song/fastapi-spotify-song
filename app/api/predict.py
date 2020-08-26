@@ -3,7 +3,7 @@ import random
 from fastapi import APIRouter
 from pydantic import BaseModel, Field, validator
 from .fedata import *
-import joblib
+# import joblib
 FILENAME = 'model-v1.sav'
 
 
@@ -11,33 +11,19 @@ log = logging.getLogger(__name__)
 router = APIRouter()
 
 
-# @validator('x1')
-# def x1_must_be_positive(cls, value):
-#     """Validate that x1 is a positive number."""
-#     assert value > 0, f'x1 == {value}, must be > 0'
-#     return value
-
-
 @router.post('/predict')
-async def predict(song: Song):
+async def predict(id: int):
     """
-    Make random baseline predictions for classification problem 🔮
-
+    takes song id from front end and returns a list
+    of song ids that are closer to the one
     ### Request Body
-    - `x1`: positive float
     - `artist_name`: String
     - `track_name`: string
     - `acousticness`: Float
     - `energy`: Float
 
-
-
     ### Response
-    - `prediction`: Genre
-    - `predict_proba`: float between 0.5 and 1.0, 
-    representing the predicted class's probability
-
-    Replace the placeholder docstring and fake predictions with your own model.
+    - `suggestion`: a list of song ids that are similar to the user's
     """
 
     X_new = to_df(song)
