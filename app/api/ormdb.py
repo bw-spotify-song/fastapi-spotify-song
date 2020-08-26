@@ -8,18 +8,18 @@ import datetime
 import psycopg2
 from os import getenv
 import os
-# from ..main import db_url
-# from dotenv import load_dotenv
-# from os.path import join, dirname
 
+from dotenv import load_dotenv
+from os.path import join, dirname
+dotenv_file = join(dirname(dirname(dirname(__file__))), '.env')
+print("**********\n", dotenv_file)
 
-# dotenv_path = join(dirname(__file__), '.env')
-# load_dotenv(dotenv_path)
-# SECRET_KEY = os.environ.get("SECRET_KEY")
-# print(dotenv_path)
-
+load_dotenv(dotenv_file)
+SECRET_KEY = os.environ.get("DATABASE_URL")
+print(SECRET_KEY)
 # database file
 engine = create_engine(getenv('DATABASE_URL'))
+
 
 # DATABASE_URL = "postgres://rrjsotrn:bcLxGv5Ukb0PKwPQjFxA7J99eHvImioH@lallah.db.elephantsql.com:5432/rrjsotrn"
 # engine = create_engine(DATABASE_URL)
