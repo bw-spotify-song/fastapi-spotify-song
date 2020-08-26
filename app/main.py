@@ -6,6 +6,8 @@ from .api.ormdb import *
 from .api.fedata import Song
 from .api import predict, viz, spotify
 
+# uvicorn app.main:app --reload
+
 app = FastAPI(
     title='Spotify song API',
     description='Fast-API interface for Spotify application',

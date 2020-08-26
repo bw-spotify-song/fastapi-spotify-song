@@ -4,8 +4,8 @@ from .fedata import *
 import joblib
 
 
-FILENAME = "./app/api/BW_Spotify_KNN.joblib"
-csv_url = "./app/api/BW_Spotify_DF.csv"
+FILENAME = "./app/api/Heroku_test.joblib"
+csv_url = "./app/api/Heroku_test.csv"
 
 log = logging.getLogger(__name__)
 router = APIRouter()
@@ -38,8 +38,9 @@ async def predict(id):
         new_obs = neighbors[1][0][6:20]
         return list(new_df.loc[new_obs, 'id'])
 
-    # id1 ='6QBInZBkQNIQYU9gGzT5l4'
-    id1 = '6NxAf7M8DNHOBTmEd3JSO5'
+    id1 = '4KuFgXbahxEILwg8qu1kKG'
+
+    # id1 = '4KuFgXbahxEILwg8qu1kKG'
     # id1 = [-1,'73LY41HCJzlQwoNBmWM7Md']
     # id1 = id1.reshape(1,-1)
 
