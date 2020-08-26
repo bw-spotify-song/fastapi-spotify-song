@@ -3,6 +3,8 @@ import random
 from fastapi import APIRouter
 from pydantic import BaseModel, Field, validator
 from .fedata import *
+import joblib
+FILENAME = 'model-v1.sav'
 
 
 log = logging.getLogger(__name__)
