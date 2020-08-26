@@ -1,11 +1,7 @@
-import logging
-import random
+# import logging
 from fastapi import APIRouter
-from pydantic import BaseModel, Field, validator
 from .fedata import *
-# import jimport jobliboblib
 import joblib
-# from sklearn.neighbors import NearestNeighbors
 
 
 FILENAME = "./app/api/BW_Spotify_KNN.joblib"
@@ -46,14 +42,9 @@ async def predict(id):
     id1 = '6NxAf7M8DNHOBTmEd3JSO5'
     # id1 = [-1,'73LY41HCJzlQwoNBmWM7Md']
     # id1 = id1.reshape(1,-1)
-    print("##############\n", df.shape, len(id1))
-    # load(.file.cs)
-    # X_new = to_df(song)
-    # log.info(X_new)
-    # y_pred = random.choice([True, False])
-    # y_pred_proba = random.random() / 2 + 0.5
 
-    trackids = predict_model(track_id= id1, new_df=df)
+
+    tracks = predict_model(track_id= id1, new_df=df)
     return {
-         'Suggested track IDs': trackids
+         'Suggested track IDs': tracks
          }
