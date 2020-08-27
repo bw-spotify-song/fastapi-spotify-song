@@ -11,8 +11,8 @@ log = logging.getLogger(__name__)
 router = APIRouter()
 
 
-@router.post('/predict')
-async def predict(id):
+@router.get('/predict/{id2}')
+async def predict(id2: str):
     """
     takes song id from front end and returns a list
     of song ids that are closer to the one
@@ -43,7 +43,9 @@ async def predict(id):
     # id1 = id1.reshape(1,-1)
 
 
-    tracks = predict_model(track_id= id, new_df=df)
+    tracks = predict_model(track_id= id2, new_df=df)
+    print("$$$$$$$$$\n",tracks)
+    print("##############id2 is\n", id2)
     return {
          'Suggested track IDs': tracks
          }
