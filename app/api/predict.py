@@ -12,26 +12,25 @@ log = logging.getLogger(__name__)
 router = APIRouter()
 
 
-@router.get('/predict/{id2}')
-async def predict(id2: str):
+@router.get('/predict/{id}')
+async def predict(id: str):
     """
-    takes song id from front end and returns a list
-    of song ids that are closer to the one
+    Takes a trackID string as input and returns a list
+    of similar trackIDs
     ### Request Body
-    - `artist_name`: String
-    - `track_name`: string
-    - `acousticness`: Float
-    - `energy`: Float
+    - `Track ID`: String
+    example: id = 5gM5byB8AWZrbadQfK45jf , 1Larmgh5TJN5PQQBhtN65P
 
     ### Response
-    - `suggestion`: a list of song ids that are similar to the user's
+    - `Suggested track IDs`: a list of trackIDs that are similar to the user's trackID
     """
 
-
+    # Import the prediction model
     knn = joblib.load(FILENAME)
     df = pd.read_csv(csv_url)
 
-    def predict_model(track_id, new_df):
+    # Comes from the colab file containing the prediction model
+    def predict_model(track_id, new_df, knn):
         obs = new_df.index[new_df['id'] == track_id]
         series = new_df.iloc[obs, 5:].to_numpy()
 
@@ -39,14 +38,13 @@ async def predict(id2: str):
         new_obs = neighbors[1][0][6:20]
         return list(new_df.loc[new_obs, 'id'])
 
+    tracks = predict_model(track_id= id, new_df=df, knn=knn)
+
     # Static Track Ids to test functionality
     # static_id1 = '4KuFgXbahxEILwg8qu1kKG'
     # static_id2 = '01LLSAYjBA6VbyzGnERWMU'
 
 
-    tracks = predict_model(track_id= id2, new_df=df)
-    print("---------\n",tracks)
-    print("##############id2 is\n", id2)
     return {
          'Suggested track IDs': tracks
          }
