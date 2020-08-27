@@ -4,20 +4,7 @@
 
 # DS PRODUCT VISION
 
-Features:
-genre
-album
-artist
-song name
-song length
-relevance (plays/day maybe?)
-regional popularity/origin
-era of release
-social connections (maybe)
-Stretch Features:
-tone
-lyrics/sentiment analysis
-danceability
+Insert Product Vision
 
 # Project Goals:
 
@@ -46,27 +33,47 @@ Model Type: K-nearest neighbors
 Target: Song ID’s
 
 # Audio Features: 
-Year (Production year of a track.)
-Acoustics (Confidence levels ranging from 0.0 to 1.0. 1.0 represents high confidence the track is acoustic.)
-Danceability (Confidence levels ranging from 0.0 to 1.0. 1.0 represents track is most danceable based on tempo, rhythm stability, beat strength, and overall regularity.)
-Duration_MS (The duration of the track in milliseconds.)
-Energy (Confidence levels ranging from 0.0 to 1.0 representing a measure of intensity and activity. For example, acid screamo has high energy whereas trance scores low on the scale.)
-Instrumentalness (Confidence levels ranging from 0.0 to 1.0. The closer the instrumentalness value is to 1.0, the greater likelihood the track contains no vocal content. Values above 0.5 are intended to represent instrumental tracks, but confidence is higher as the value approaches 1.0. “Ooh” and “aah” sounds are treated as instrumental in this context.)
-Liveness (Confidence levels ranging from 0.0 to 1.0. A value above 0.8 provides confidence the track is live.) 
-Loudness (Float typically ranging from -60 to 0 decibels (dB). A measure of amplitude.)
-Speechiness (Ranges from 0 to 1) 
-Tempo (Float typically ranging from 50 to 150)
-Valence (Ranges from 0 to 1)
-Artist Popularity (Ranges from 0-100)  
-Genre 
+- Year (Production year of a track.)
+
+- Acoustics (Confidence levels ranging from 0.0 to 1.0. 1.0 represents high confidence the track is acoustic.)
+
+- Danceability (Confidence levels ranging from 0.0 to 1.0. 1.0 represents track is most danceable based on tempo, rhythm stability, beat strength, and overall regularity.)
+
+- Duration_MS (The duration of the track in milliseconds.)
+
+- Energy (Confidence levels ranging from 0.0 to 1.0 representing a measure of intensity and activity. For example, acid screamo has high energy whereas trance scores low on the scale.)
+
+- Instrumentalness (Confidence levels ranging from 0.0 to 1.0. The closer the instrumentalness value is to 1.0, the greater likelihood the track contains no vocal content. - Values above 0.5 are intended to represent instrumental tracks, but confidence is higher as the value approaches 1.0. “Ooh” and “aah” sounds are treated as instrumental in this context.)
+
+- Liveness (Confidence levels ranging from 0.0 to 1.0. A value above 0.8 provides confidence the track is live.) 
+
+- Loudness (Amplitude level ranging from -60 to 0 decibels (dB).)
+
+- Speechiness (Confidence levels ranging from 0.0 to 1.0 to detect the presence of spoken words in a track. The more exclusively speech-like the recording (e.g. podcast, audio book, poetry), the closer to 1.0 the attribute value. Values above 0.66 describe tracks that are probably made entirely of spoken words. Values between 0.33 and 0.66 describe tracks that may contain both music and speech, either in sections or layered, including such cases as rap music. Values below 0.33 most likely represent music and other non-speech-like tracks.) 
+
+- Tempo (The overall estimated tempo of a track in beats per minute (BPM). In musical terminology, tempo is the speed or pace of a given piece and derives directly from the average beat duration.)
+
+- Valence (Confidence levels ranging from 0.0 to 1.0 describing the positiveness conveyed by a track. Tracks with high valence sound more positive (e.g. happy, cheerful, euphoric), while tracks with low valence sound more negative (e.g. sad, depressed, angry). )
+
+- Artist Popularity (A value between 0 and 100, with 100 being the most popular. The popularity is calculated by algorithm and is based, in the most part, on the total number of plays the track has had and how recent those plays are.)  
+
+- Genre (* A conventional category that identifies some pieces of music as belonging to a shared tradition or set of conventions. It is to be distinguished from musical form and musical style.)
+
+- Mode (Mode indicates the modality (major or minor) of a track, the type of scale from which its melodic content is derived. Major is represented by 1 and minor is 0.)
+
+- ID (The unique Spotify ID for a track. For example, ##############)
+
+- URI (The unique Spotify URI for a track, For example, ################)
+
 
 Reason for using K-nearest neighbors: We chose to work with nearest neighbors because of its ability to cluster observations around common features. Since we were working a tabular dataset it seemed best to avoid any type of neural networks. There was also no need to apply any NLP techniques because there was justifiable reason to use it on any of the columns that contained text. Instead we dummy encoded the genres because most songs had multiple genres/sub genres. 
 
 Results:  We were able to pull an array of similar song suggestions when we would input a single song ID. 
 Further research: We have begun working on applying text classification to the lyrics of the songs to see if we can get a different type of recommendation that is still useful and appreciated by the user. 
 
-Url to Dataset: https://www.kaggle.com/yamaerenay/spotify-dataset-19212020-160k-tracks
-
+Spotify Kaggle Dataset: https://www.kaggle.com/yamaerenay/spotify-dataset-19212020-160k-tracks
+Spotify Audio Features: https://developer.spotify.com/documentation/web-api/reference/tracks/get-audio-features/
+* Genre definition: https://en.wikipedia.org/wiki/Music_genre
 ###############################################################################################################################################################################
 [[  Need to edit the table of contents  ]]
 
