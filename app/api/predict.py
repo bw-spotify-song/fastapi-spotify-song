@@ -1,6 +1,5 @@
 import logging
 from fastapi import APIRouter
-# from api.fedata import *
 import joblib
 import pandas as pd
 
