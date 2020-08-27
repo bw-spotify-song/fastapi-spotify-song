@@ -1,3 +1,8 @@
+"""
+Makes live api call to spotify and returns information for a TrackId
+Input: Gets a TrackId (no restriction)
+Output: a jason data format including information for the TrackId
+"""
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
 from .settings import CLIENT_ID, CLIENT_SECRET

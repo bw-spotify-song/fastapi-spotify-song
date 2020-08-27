@@ -1,3 +1,7 @@
+"""
+Spotify app based on fastapi
+routs: root, database, songs, reset
+"""
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn

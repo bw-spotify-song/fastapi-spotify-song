@@ -1,3 +1,6 @@
+"""
+defines a class type for sqlalchemy, and loads the database based on a csv file
+"""
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, Session

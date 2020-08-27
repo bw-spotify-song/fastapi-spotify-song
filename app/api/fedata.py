@@ -1,5 +1,7 @@
+"""
+defines the data model type for use in fastapi
+"""
 import logging
-
 # from fastapi import APIRouter
 import pandas as pd
 from pydantic import BaseModel, Field, validator

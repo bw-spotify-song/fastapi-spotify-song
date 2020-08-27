@@ -1,3 +1,6 @@
+"""
+testing the root and predict path
+"""
 from fastapi.testclient import TestClient
 
 from app.main import app

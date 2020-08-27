@@ -1,3 +1,8 @@
+"""
+Input: Takes TrackId from a database which is populated based on the training set
+Output: Returns 50 TrackIds that relates to the original TrackId
+"""
+
 import logging
 from fastapi import APIRouter
 import joblib
