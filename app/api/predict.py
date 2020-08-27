@@ -4,8 +4,8 @@ import joblib
 import pandas as pd
 
 
-FILENAME = "./app/api/Heroku_test.joblib"
-csv_url = "./app/api/Heroku_test.csv"
+FILENAME = "./app/api/BW_Spotify_Final.joblib"
+csv_url = "./app/api/BW_Spotify_Final.csv"
 
 log = logging.getLogger(__name__)
 router = APIRouter()
@@ -18,7 +18,24 @@ async def predict(id: str):
     of similar trackIDs
     ### Request Body
     - `Track ID`: String
-    example: id = 5gM5byB8AWZrbadQfK45jf , 1Larmgh5TJN5PQQBhtN65P
+    example: id =
+    '4lsYP6koQW8qqCUrSh6mse',
+    '32Lg670koSWkUZQ4ExgMzD',
+    '4r9ofEH67ddYsgA6OPBZn5',
+    '2v2g5e1hjTquEc03yu1sOg',
+    '5bpx60gYQoDDJcP7vBygPB',
+    '07j5RLJHwsm4cUb3GGoW3w',
+    '684YrlUmbSh6qKvBJaquVE',
+    '7iMI1Z3h8H5UdKeA3rBqlP',
+    '5oltEh65341tsMWHpWT0h5',
+    '6W2iNy14pJ4DW30yCY4bop',
+    '1kKLWkqyZEnrOd5tBYYCUn',
+    '1kKLWkqyZEnrOd5tBYYCUn',
+    '7pv80uUHfocFqfTytu1MVi',
+    '1kKLWkqyZEnrOd5tBYYCUn',
+    '1kKLWkqyZEnrOd5tBYYCUn',
+    '45dAw6GXEsogcDF3NUgj3O',
+    '2UH4rbT5WrO2sDCanZI0vX',
 
     ### Response
     - `Suggested track IDs`: a list of trackIDs that are similar to the user's trackID
@@ -34,7 +51,7 @@ async def predict(id: str):
         series = new_df.iloc[obs, 5:].to_numpy()
 
         neighbors = knn.kneighbors(series)
-        new_obs = neighbors[1][0][6:20]
+        new_obs = neighbors[1][0][6:56]
         return list(new_df.loc[new_obs, 'id'])
 
     tracks = predict_model(track_id= id, new_df=df, knn=knn)
