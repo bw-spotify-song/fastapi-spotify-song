@@ -1,7 +1,8 @@
-# import logging
+import logging
 from fastapi import APIRouter
-from .fedata import *
+# from api.fedata import *
 import joblib
+import pandas as pd
 
 
 FILENAME = "./app/api/Heroku_test.joblib"
