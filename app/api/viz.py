@@ -1,12 +1,19 @@
 from fastapi import APIRouter, HTTPException
 import pandas as pd
 import plotly.express as px
-
 router = APIRouter()
 
+FILENAME = "./app/api/BW_Spotify_Final.joblib"
+csv_url = "./app/api/BW_Spotify_Final.csv"
 
-@router.get('/viz/{statecode}')
-async def viz(statecode: str):
+
+
+
+
+
+
+@router.get('/viz/{Radar Chart}')
+async def viz(track_id: str):
     """
     Visualize state unemployment rate from [Federal Reserve Economic Data](https://fred.stlouisfed.org/) 📈
     
@@ -17,38 +24,55 @@ async def viz(statecode: str):
     ### Response
     JSON string to render with [react-plotly.js](https://plotly.com/javascript/react/)
     """
+def feature_average(track_id):
+    '''
+    This function returns the sum of the features for the ten recommended songs.
+    '''
+    similar_tracks = predict(track_id)
+    # Return a dataframe with only the ten most similar tracks
+    similar_tracks = new_df[new_df["id"].isin(similar_tracks)]
+    similar_tracks = similar_tracks[['acousticness', 'danceability',
+                                     'energy', 'instrumentalness',
+                                     'liveness',
+                                     'speechiness', 'valence']]
+    # Average features of ten tracks
+    acousticness = round(similar_tracks['acousticness'].mean(), 2)
+    danceability = round(similar_tracks['danceability'].mean(), 2)
+    energy = round(similar_tracks['energy'].mean(), 2)
+    instrumentalness = round(similar_tracks['instrumentalness'].mean(), 2)
+    liveness = round(similar_tracks['liveness'].mean(), 2)
+    #mode = round(similar_tracks['mode'].mean(), 2)
+    speechiness = round(similar_tracks['speechiness'].mean(), 2)
+    valence = round(similar_tracks['valence'].mean(), 2)
+    # Store all to "features" variable
+    features = []
+    attributes = [
+        acousticness,
+        danceability,
+        energy,
+        instrumentalness,
+        liveness,
+        speechiness,
+        valence]
+    # features.append(acousticness)
+    for attribute in attributes:
+        features.append(attribute)
+    return features
+    r = feature_average(track_id)
+    attributes = [
+        'acousticness',
+        'danceability',
+        'energy',
+        'instrumentalness',
+        'liveness',
+        'speechiness',
+        'valence']
 
-    # Validate the state code
-    statecodes = {
-        'AL': 'Alabama', 'AK': 'Alaska', 'AZ': 'Arizona', 'AR': 'Arkansas', 
-        'CA': 'California', 'CO': 'Colorado', 'CT': 'Connecticut', 
-        'DE': 'Delaware', 'DC': 'District of Columbia', 'FL': 'Florida', 
-        'GA': 'Georgia', 'HI': 'Hawaii', 'ID': 'Idaho', 'IL': 'Illinois', 
-        'IN': 'Indiana', 'IA': 'Iowa', 'KS': 'Kansas', 'KY': 'Kentucky', 
-        'LA': 'Louisiana', 'ME': 'Maine', 'MD': 'Maryland', 
-        'MA': 'Massachusetts', 'MI': 'Michigan', 'MN': 'Minnesota', 
-        'MS': 'Mississippi', 'MO': 'Missouri', 'MT': 'Montana', 
-        'NE': 'Nebraska', 'NV': 'Nevada', 'NH': 'New Hampshire', 
-        'NJ': 'New Jersey', 'NM': 'New Mexico', 'NY': 'New York', 
-        'NC': 'North Carolina', 'ND': 'North Dakota', 'OH': 'Ohio', 
-        'OK': 'Oklahoma', 'OR': 'Oregon', 'PA': 'Pennsylvania', 
-        'RI': 'Rhode Island', 'SC': 'South Carolina', 'SD': 'South Dakota', 
-        'TN': 'Tennessee', 'TX': 'Texas', 'UT': 'Utah', 'VT': 'Vermont', 
-        'VA': 'Virginia', 'WA': 'Washington', 'WV': 'West Virginia', 
-        'WI': 'Wisconsin', 'WY': 'Wyoming'
-    }
-    statecode = statecode.upper()
-    if statecode not in statecodes:
-        raise HTTPException(status_code=404, detail=f'State code {statecode} not found')
 
-    # Get the state's unemployment rate data from FRED
-    url = f'https://fred.stlouisfed.org/graph/fredgraph.csv?id={statecode}UR'
-    df = pd.read_csv(url, parse_dates=['DATE'])
-    df.columns = ['Date', 'Percent']
 
-    # Make Plotly figure
-    statename = statecodes[statecode]
-    fig = px.line(df, x='Date', y='Percent', title=f'{statename} Unemployment Rate')
-
+      # Make Plotly figure
+    fig = px.line_polar(r=r, theta=attributes, line_close=True)
+    fig.update_traces(fill='toself')
+    fig.show()
     # Return Plotly figure as JSON string
     return fig.to_json()
