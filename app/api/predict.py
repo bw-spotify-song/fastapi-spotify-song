@@ -39,13 +39,13 @@ async def predict(id2: str):
         new_obs = neighbors[1][0][6:20]
         return list(new_df.loc[new_obs, 'id'])
 
-    # id1 = '4KuFgXbahxEILwg8qu1kKG'
-    # id1 = [-1,'73LY41HCJzlQwoNBmWM7Md']
-    # id1 = id1.reshape(1,-1)
+    # Static Track Ids to test functionality
+    # static_id1 = '4KuFgXbahxEILwg8qu1kKG'
+    # static_id2 = '01LLSAYjBA6VbyzGnERWMU'
 
 
     tracks = predict_model(track_id= id2, new_df=df)
-    print("$$$$$$$$$\n",tracks)
+    print("---------\n",tracks)
     print("##############id2 is\n", id2)
     return {
          'Suggested track IDs': tracks
