@@ -7,14 +7,18 @@ client = TestClient(app)
 
 def test_valid_input():
     """Return 200 Success when input is valid."""
-    response = client.post(
-        '/predict',
-        json={
-            'x1': 3.14,
-            'x2': -42,
-            'x3': 'banjo'
-        }
-    )
+
+    response = client.get('/predict/07j5RLJHwsm4cUb3GGoW3w')
+
+    # response = client.post(
+    # '/predict',
+    #     json={
+    #         'x1': 3.14,
+    #         'x2': -42,
+    #         'x3': 'banjo'
+    #     }
+    # )
+
     body = response.json()
     assert response.status_code == 200
     assert body['prediction'] in [True, False]

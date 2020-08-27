@@ -13,12 +13,12 @@ def test_docs():
 
 
 def test_predict():
-    """Return HTML docs for root route."""
+    """Test the webs server response and the returned data type on predict method"""
     response = client.get('/predict/07j5RLJHwsm4cUb3GGoW3w')
     assert response.status_code == 200
     assert response.headers['content-type'].startswith('application/json')
 
 
 if __name__ == '__main__':
-    # test_docs()
+    test_docs()
     test_predict()

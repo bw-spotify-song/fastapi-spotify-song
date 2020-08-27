@@ -5,7 +5,7 @@ from fastapi import APIRouter
 from sqlalchemy.sql.expression import func, select
 from .ormdb import *
 
-
+# all the keys are read from .env located in the parent directory
 client_cred = SpotifyClientCredentials(client_id=CLIENT_ID, client_secret=CLIENT_SECRET)
 sp = spotipy.Spotify(client_credentials_manager=client_cred)
 
@@ -27,9 +27,10 @@ def audio_feat(id):
 @router.post('/spotify/')
 async def spotify(id: str):
     """
-    A live API call to spotify, to get the info for a trackID
+    A live API call to spotify, to get the information about a certain trackID
     :return:
     """
+
     # a random api call to spotify
     db = get_db()
     songs = db.query(Songdb).order_by(func.random()).limit(1).all()
@@ -39,8 +40,8 @@ async def spotify(id: str):
         song_id.append(song.id)
     # audio_feat(song_id[0])
 
+    # artist name and the track name
     artist = sp.track(id)["album"]["artists"][0]["name"]
     track = sp.track(id)["album"]["name"]
-
 
     return sp.track(id)

@@ -15,7 +15,9 @@ Base.metadata.create_all(bind=engine)
 
 class Songdb(Base):
     __tablename__ = "Song_table"
-    """Song_db data model based on sqlalchemy"""
+    """Song_db data model based on sqlalchemy 
+    used by elephant postgres database """
+
     index = Column(Integer, primary_key=True, index=True)
     track_number = Column(String)
     album = Column(String)
@@ -35,13 +37,20 @@ class Songdb(Base):
 
 
 def reset_db(engine):
+    """
+    reset the database and re-create it
+    """
     try:
         Base.metadata.drop_all(bind=engine)
     finally:
         Base.metadata.create_all(bind=engine)
     return
 
+
 def get_db():
+    """
+    Open a db session
+    """
     try:
         db.close()
     finally:
@@ -51,7 +60,7 @@ def get_db():
 
 def load_csv(db: Session, file_name: str):
     """
-    commit the csv file into the db session
+    Load a csv file into the db session
     """
 
     with open(file_name, "r") as f:

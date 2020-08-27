@@ -6,10 +6,10 @@ from .api.ormdb import *
 from .api.fedata import Song
 from .api import predict, viz, spotify
 
-# uvicorn app.main:app --reload
+# to launch the local web server: uvicorn app.main:app --reload
 
 app = FastAPI(
-    title='Spotify song API',
+    title='Spotify Web App',
     description='Fast-API interface for Spotify application',
     version='0.1',
     docs_url='/',
@@ -30,13 +30,16 @@ app.add_middleware(
 
 @app.get("/")
 def root():
+    """
+    Lists all the routs
+    """
     return
 
 
 @app.get("/Database")
 def db_reload():
     """
-    Reset, Reload the database from spotify_music.csv file
+    Reset and reload the database from spotify_music.csv file
     """
     reset_db(engine)
     db = get_db()
@@ -48,6 +51,10 @@ def db_reload():
 
 @app.get("/songs/", response_model=List[Song])
 def songs_list():
+    """
+    Get all the audio features of the songs
+    that exist in the database.
+    """
     db = get_db()
     songs = db.query(Songdb).all()
     db.close()

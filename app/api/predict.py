@@ -47,6 +47,10 @@ async def predict(id: str):
 
     # Comes from the colab file containing the prediction model
     def predict_model(track_id, new_df, knn):
+        """
+        It takes the user's track id and trained dataframe and the joblib model.
+        It returns a list of 50 track ids that are similar to the user's track id
+        """
         obs = new_df.index[new_df['id'] == track_id]
         series = new_df.iloc[obs, 5:].to_numpy()
 
@@ -55,11 +59,6 @@ async def predict(id: str):
         return list(new_df.loc[new_obs, 'id'])
 
     tracks = predict_model(track_id= id, new_df=df, knn=knn)
-
-    # Static Track Ids to test functionality
-    # static_id1 = '4KuFgXbahxEILwg8qu1kKG'
-    # static_id2 = '01LLSAYjBA6VbyzGnERWMU'
-
 
     return {
          'Suggested track IDs': tracks
