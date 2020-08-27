@@ -1,4 +1,6 @@
-# DS Build Week scaffold [[  DRAFT  ]]
+# Data Science Build Week [[  DRAFT  ]]
+- DS_16 Machine Learning
+- DS_17 Data Engineering
 
 # DS PRODUCT VISION
 
@@ -43,15 +45,15 @@ Data Set: Spotify Dataset 1912-2020, 160k Tracks
 Model Type: K-nearest neighbors 
 Target: Song ID’s
 
-Features: 
-Year 
-Acoustics (Ranges from 0 to 1)
-Danceability (Ranges from 0 to 1)
-Duration_MS (Integer typically ranging from 200k to 300k)
-Energy (Ranges from 0 to 1)
-Instrumentalness (Ranges from 0 to 1)
-Liveness (Ranges from 0 to 1) 
-Loudness (Float typically ranging from -60 to 0)
+# Audio Features: 
+Year (Production year of a track.)
+Acoustics (Confidence levels ranging from 0.0 to 1.0. 1.0 represents high confidence the track is acoustic.)
+Danceability (Confidence levels ranging from 0.0 to 1.0. 1.0 represents track is most danceable based on tempo, rhythm stability, beat strength, and overall regularity.)
+Duration_MS (The duration of the track in milliseconds.)
+Energy (Confidence levels ranging from 0.0 to 1.0 representing a measure of intensity and activity. For example, acid screamo has high energy whereas trance scores low on the scale.)
+Instrumentalness (Confidence levels ranging from 0.0 to 1.0. The closer the instrumentalness value is to 1.0, the greater likelihood the track contains no vocal content. Values above 0.5 are intended to represent instrumental tracks, but confidence is higher as the value approaches 1.0. “Ooh” and “aah” sounds are treated as instrumental in this context.)
+Liveness (Confidence levels ranging from 0.0 to 1.0. A value above 0.8 provides confidence the track is live.) 
+Loudness (Float typically ranging from -60 to 0 decibels (dB). A measure of amplitude.)
 Speechiness (Ranges from 0 to 1) 
 Tempo (Float typically ranging from 50 to 150)
 Valence (Ranges from 0 to 1)
