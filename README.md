@@ -1,6 +1,6 @@
 # DS Build Week scaffold [[  DRAFT  ]]
 
-DS PRODUCT VISION
+# DS PRODUCT VISION
 
 Features:
 genre
@@ -17,7 +17,7 @@ tone
 lyrics/sentiment analysis
 danceability
 
-Project Goals:
+# Project Goals:
 
 Q: Describe the established data source with at least rough data able to be provided on day one.
 A: List of songs, basic info about songs, song name, artist, album, length of song, genre, general classification/categorization, number of plays, indicator of how much you might like song
@@ -31,7 +31,7 @@ A: From our team's personal experience, listening to a song all the way through 
 Q: What kind of target output can you deliver to the Web/UX/iOS teams to work with? Is it in JSON format or something else?
 A: The Spotify API already outputs search requests as JSON, which our Data Engineer plans to flatten for ease of data analysis. We plan to change this back to Python via a Flask app when we return it to the backend team.
 
-Color Scheme:
+# Color Scheme:
 
 Background color: #D4F779
 Text-color: Black
