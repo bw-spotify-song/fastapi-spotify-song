@@ -2,11 +2,24 @@
 - DS_16 Machine Learning
 - DS_17 Data Engineering
 
-# DS PRODUCT VISION
+Data Set: Sample from * Kaggle Spotify Dataset 1912-2020, 160k Tracks
+Model Type: K-nearest neighbors 
+Target: Song ID’s
 
-To build a functioning application programming intferface and a machine learning model, both, to be used in a full-stack enviroment capable of recieving GET requests and outputting POST requests. 
+- [Product Vision](#ds-product-vision)
+- [Project Goals](#project-goals)
+- [Getting started](#getting-started)
+- [File structure](#file-structure)
+- [More instructions](#more-instructions)
+- [Deploying to Heroku](#deploying-to-heroku)
+- [Example: Data visualization](#example-data-visualization)
+- [Example: Machine learning](#example-machine-learning)
 
-# Project Goals:
+## DS PRODUCT VISION
+
+To build a functioning application programming interface and machine learning model to be used in a full-stack enviroment capable of recieving GET requests and outputting POST requests. 
+
+## Project Goals: (Tailor)
 
 Q: Describe the established data source with at least rough data able to be provided on day one.
 A: List of songs, basic info about songs, song name, artist, album, length of song, genre, general classification/categorization, number of plays, indicator of how much you might like song
@@ -20,19 +33,8 @@ A: From our team's personal experience, listening to a song all the way through 
 Q: What kind of target output can you deliver to the Web/UX/iOS teams to work with? Is it in JSON format or something else?
 A: The Spotify API already outputs search requests as JSON, which our Data Engineer plans to flatten for ease of data analysis. We plan to change this back to Python via a Flask app when we return it to the backend team.
 
-# Color Scheme:
+## Audio Features: (Complete)
 
-Background color: #D4F779
-Text-color: Black
-Footer and Header Text Color: #F22FA5
-Font: Circular --- be sure to import and specify in font-family, can be found here or here. Alternatively, the path is CircularStd-Bold.otf
-Logo: can be found here. The path is assets/vinyl-logo-512-pink.png \
-
-Data Set: Spotify Dataset 1912-2020, 160k Tracks
-Model Type: K-nearest neighbors 
-Target: Song ID’s
-
-# Audio Features: 
 - Acoustics (Confidence levels ranging from 0.0 to 1.0. 1.0 represents high confidence the track is acoustic.)
 
 - Artist Popularity (A value between 0 and 100, with 100 being the most popular. The popularity is calculated by algorithm and is based, in the most part, on the total number of plays the track has had and how recent those plays are.)  
@@ -70,9 +72,21 @@ Reason for using K-nearest neighbors: We chose to work with nearest neighbors be
 Results:  We were able to pull an array of similar song suggestions when we would input a single song ID. 
 Further research: We have begun working on applying text classification to the lyrics of the songs to see if we can get a different type of recommendation that is still useful and appreciated by the user. 
 
-Spotify Kaggle Dataset: https://www.kaggle.com/yamaerenay/spotify-dataset-19212020-160k-tracks
-Spotify Audio Features: https://developer.spotify.com/documentation/web-api/reference/tracks/get-audio-features/
+* Spotify Kaggle Dataset: https://www.kaggle.com/yamaerenay/spotify-dataset-19212020-160k-tracks
+* Spotify Audio Features: https://developer.spotify.com/documentation/web-api/reference/tracks/get-audio-features/
 * Genre definition: https://en.wikipedia.org/wiki/Music_genre
+
+## Getting started (tailor)
+
+asdfsdfgsdfgsdfsdfsdf
+
+### Color Scheme:
+
+Background color: #D4F779
+Text-color: Black
+Footer and Header Text Color: #F22FA5
+Font: Circular --- be sure to import and specify in font-family, can be found here or here. Alternatively, the path is CircularStd-Bold.otf
+Logo: can be found here. The path is assets/vinyl-logo-512-pink.png/
 ###############################################################################################################################################################################
 [[  Need to edit the table of contents  ]]
 
