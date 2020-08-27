@@ -2,28 +2,24 @@
 - DS_16 Machine Learning
 - DS_17 Data Engineering
 
-# DS PRODUCT VISION
+Data Set: Sample from * Kaggle Spotify Dataset 1912-2020, 160k Tracks
+Model Type: K-nearest neighbors 
+Target: Song ID’s
 
-<<<<<<< HEAD
-Features:
-genre
-album
-artist
-song name
-song length
-relevance (plays/day maybe?)
-regional popularity/origin
-era of release
-social connections (maybe)
-Stretch Features:
-tone
-lyrics/sentiment analysis
-danceability
-=======
-Insert Product Vision
->>>>>>> a3c6d7d22339d0cdae80aa82ec44cbccca1f6094
+- [Product Vision](#ds-product-vision)
+- [Project Goals](#project-goals)
+- [Getting started](#getting-started)
+- [File structure](#file-structure)
+- [More instructions](#more-instructions)
+- [Deploying to Heroku](#deploying-to-heroku)
+- [Example: Data visualization](#example-data-visualization)
+- [Example: Machine learning](#example-machine-learning)
 
-# Project Goals:
+## DS PRODUCT VISION
+
+To build a functioning application programming interface and machine learning model to be used in a full-stack enviroment capable of recieving GET requests and outputting POST requests. 
+
+## Project Goals: (Tailor)
 
 Q: Describe the established data source with at least rough data able to be provided on day one.
 A: List of songs, basic info about songs, song name, artist, album, length of song, genre, general classification/categorization, number of plays, indicator of how much you might like song
@@ -37,37 +33,11 @@ A: From our team's personal experience, listening to a song all the way through 
 Q: What kind of target output can you deliver to the Web/UX/iOS teams to work with? Is it in JSON format or something else?
 A: The Spotify API already outputs search requests as JSON, which our Data Engineer plans to flatten for ease of data analysis. We plan to change this back to Python via a Flask app when we return it to the backend team.
 
-# Color Scheme:
-
-Background color: #D4F779
-Text-color: Black
-Footer and Header Text Color: #F22FA5
-Font: Circular --- be sure to import and specify in font-family, can be found here or here. Alternatively, the path is CircularStd-Bold.otf
-Logo: can be found here. The path is assets/vinyl-logo-512-pink.png \
-
-Data Set: Spotify Dataset 1912-2020, 160k Tracks
-Model Type: K-nearest neighbors 
-Target: Song ID’s
-
-# Audio Features: 
-<<<<<<< HEAD
-Year (Production year of a track.)
-Acoustics (Confidence levels ranging from 0.0 to 1.0. 1.0 represents high confidence the track is acoustic.)
-Danceability (Confidence levels ranging from 0.0 to 1.0. 1.0 represents track is most danceable based on tempo, rhythm stability, beat strength, and overall regularity.)
-Duration_MS (The duration of the track in milliseconds.)
-Energy (Confidence levels ranging from 0.0 to 1.0 representing a measure of intensity and activity. For example, acid screamo has high energy whereas trance scores low on the scale.)
-Instrumentalness (Confidence levels ranging from 0.0 to 1.0. The closer the instrumentalness value is to 1.0, the greater likelihood the track contains no vocal content. Values above 0.5 are intended to represent instrumental tracks, but confidence is higher as the value approaches 1.0. “Ooh” and “aah” sounds are treated as instrumental in this context.)
-Liveness (Confidence levels ranging from 0.0 to 1.0. A value above 0.8 provides confidence the track is live.) 
-Loudness (Float typically ranging from -60 to 0 decibels (dB). A measure of amplitude.)
-Speechiness (Ranges from 0 to 1) 
-Tempo (Float typically ranging from 50 to 150)
-Valence (Ranges from 0 to 1)
-Artist Popularity (Ranges from 0-100)  
-Genre 
-=======
-- Year (Production year of a track.)
+## Audio Features: (Complete)
 
 - Acoustics (Confidence levels ranging from 0.0 to 1.0. 1.0 represents high confidence the track is acoustic.)
+
+- Artist Popularity (A value between 0 and 100, with 100 being the most popular. The popularity is calculated by algorithm and is based, in the most part, on the total number of plays the track has had and how recent those plays are.)  
 
 - Danceability (Confidence levels ranging from 0.0 to 1.0. 1.0 represents track is most danceable based on tempo, rhythm stability, beat strength, and overall regularity.)
 
@@ -77,41 +47,46 @@ Genre
 
 - Instrumentalness (Confidence levels ranging from 0.0 to 1.0. The closer the instrumentalness value is to 1.0, the greater likelihood the track contains no vocal content. - Values above 0.5 are intended to represent instrumental tracks, but confidence is higher as the value approaches 1.0. “Ooh” and “aah” sounds are treated as instrumental in this context.)
 
+- Genre (* A conventional category that identifies some pieces of music as belonging to a shared tradition or set of conventions. It is to be distinguished from musical form and musical style.)
+
+- ID (A string to uniquely identify the Spotify ID for a track. For example, '1kKLWkqyZEnrOd5tBYYCUn',)
+
 - Liveness (Confidence levels ranging from 0.0 to 1.0. A value above 0.8 provides confidence the track is live.) 
 
 - Loudness (Amplitude level ranging from -60 to 0 decibels (dB).)
+
+- Mode (Mode indicates the modality (major or minor) of a track, the type of scale from which its melodic content is derived. Major is represented by 1 and minor is 0.)
 
 - Speechiness (Confidence levels ranging from 0.0 to 1.0 to detect the presence of spoken words in a track. The more exclusively speech-like the recording (e.g. podcast, audio book, poetry), the closer to 1.0 the attribute value. Values above 0.66 describe tracks that are probably made entirely of spoken words. Values between 0.33 and 0.66 describe tracks that may contain both music and speech, either in sections or layered, including such cases as rap music. Values below 0.33 most likely represent music and other non-speech-like tracks.) 
 
 - Tempo (The overall estimated tempo of a track in beats per minute (BPM). In musical terminology, tempo is the speed or pace of a given piece and derives directly from the average beat duration.)
 
-- Valence (Confidence levels ranging from 0.0 to 1.0 describing the positiveness conveyed by a track. Tracks with high valence sound more positive (e.g. happy, cheerful, euphoric), while tracks with low valence sound more negative (e.g. sad, depressed, angry). )
+- URI (A string to uniquely identify the Spotify URI (Uniform Resource Identifier) for a track. For example, 'spotify:track:7lEptt4wbM0yJTvSG5EBof':
+https://itknowledgeexchange.techtarget.com/overheard/files/2016/11/URI.png.)
 
-- Artist Popularity (A value between 0 and 100, with 100 being the most popular. The popularity is calculated by algorithm and is based, in the most part, on the total number of plays the track has had and how recent those plays are.)  
+- Year (Production year of a track.)
 
-- Genre (* A conventional category that identifies some pieces of music as belonging to a shared tradition or set of conventions. It is to be distinguished from musical form and musical style.)
-
-- Mode (Mode indicates the modality (major or minor) of a track, the type of scale from which its melodic content is derived. Major is represented by 1 and minor is 0.)
-
-- ID (The unique Spotify ID for a track. For example, ##############)
-
-- URI (The unique Spotify URI for a track, For example, ################)
-
->>>>>>> a3c6d7d22339d0cdae80aa82ec44cbccca1f6094
 
 Reason for using K-nearest neighbors: We chose to work with nearest neighbors because of its ability to cluster observations around common features. Since we were working a tabular dataset it seemed best to avoid any type of neural networks. There was also no need to apply any NLP techniques because there was justifiable reason to use it on any of the columns that contained text. Instead we dummy encoded the genres because most songs had multiple genres/sub genres. 
 
 Results:  We were able to pull an array of similar song suggestions when we would input a single song ID. 
 Further research: We have begun working on applying text classification to the lyrics of the songs to see if we can get a different type of recommendation that is still useful and appreciated by the user. 
 
-<<<<<<< HEAD
-Url to Dataset: https://www.kaggle.com/yamaerenay/spotify-dataset-19212020-160k-tracks
-
-=======
-Spotify Kaggle Dataset: https://www.kaggle.com/yamaerenay/spotify-dataset-19212020-160k-tracks
-Spotify Audio Features: https://developer.spotify.com/documentation/web-api/reference/tracks/get-audio-features/
+* Spotify Kaggle Dataset: https://www.kaggle.com/yamaerenay/spotify-dataset-19212020-160k-tracks
+* Spotify Audio Features: https://developer.spotify.com/documentation/web-api/reference/tracks/get-audio-features/
 * Genre definition: https://en.wikipedia.org/wiki/Music_genre
->>>>>>> a3c6d7d22339d0cdae80aa82ec44cbccca1f6094
+
+## Getting started (tailor)
+
+asdfsdfgsdfgsdfsdfsdf
+
+### Color Scheme:
+
+Background color: #D4F779
+Text-color: Black
+Footer and Header Text Color: #F22FA5
+Font: Circular --- be sure to import and specify in font-family, can be found here or here. Alternatively, the path is CircularStd-Bold.otf
+Logo: can be found here. The path is assets/vinyl-logo-512-pink.png/
 ###############################################################################################################################################################################
 [[  Need to edit the table of contents  ]]
 
