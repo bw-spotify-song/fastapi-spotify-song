@@ -1,6 +1,7 @@
 # DS Build Week scaffold [[  DRAFT  ]]
 
 DS PRODUCT VISION
+
 Features:
 genre
 album
@@ -15,17 +16,23 @@ Stretch Features:
 tone
 lyrics/sentiment analysis
 danceability
+
 Project Goals:
+
 Q: Describe the established data source with at least rough data able to be provided on day one.
 A: List of songs, basic info about songs, song name, artist, album, length of song, genre, general classification/categorization, number of plays, indicator of how much you might like song
+
 Q: Write a description for what the data science problem is. What uncertainty or prediction are you trying to discover? How could this data be used to find a solution to this problem?
 A: The Data Science team aims to solve the problem of inadequate or inaccurate predictions of songs that the user might enjoy. Current models do not seem to be super effective -- a large portion of our team does not enjoy ~30% of their Discovery Weekly playlist, and we aim to minimize that number (aiming for ~20%)
+
 Q: What's in a good song suggestion? How do we know the suggestion was good? Did the user like it or add it to playlist of any kind?
 A: From our team's personal experience, listening to a song all the way through without skipping is generally the best indication of whether a song was a good prediction or not. Adding a song to a playlist or liking a song can give an indication about a particularly good suggestion, but we've discovered that most users are not likely to do this on "good suggestions" only "really good suggestions".
+
 Q: What kind of target output can you deliver to the Web/UX/iOS teams to work with? Is it in JSON format or something else?
 A: The Spotify API already outputs search requests as JSON, which our Data Engineer plans to flatten for ease of data analysis. We plan to change this back to Python via a Flask app when we return it to the backend team.
-\
+
 Color Scheme:
+
 Background color: #D4F779
 Text-color: Black
 Footer and Header Text Color: #F22FA5
@@ -34,7 +41,8 @@ Logo: can be found here. The path is assets/vinyl-logo-512-pink.png \
 
 Data Set: Spotify Dataset 1912-2020, 160k Tracks
 Model Type: K-nearest neighbors 
-Target: Song ID’s 
+Target: Song ID’s
+
 Features: 
 Year 
 Acoustics (Ranges from 0 to 1)
@@ -49,9 +57,12 @@ Tempo (Float typically ranging from 50 to 150)
 Valence (Ranges from 0 to 1)
 Artist Popularity (Ranges from 0-100)  
 Genre 
+
 Reason for using K-nearest neighbors: We chose to work with nearest neighbors because of its ability to cluster observations around common features. Since we were working a tabular dataset it seemed best to avoid any type of neural networks. There was also no need to apply any NLP techniques because there was justifiable reason to use it on any of the columns that contained text. Instead we dummy encoded the genres because most songs had multiple genres/sub genres. 
+
 Results:  We were able to pull an array of similar song suggestions when we would input a single song ID. 
 Further research: We have begun working on applying text classification to the lyrics of the songs to see if we can get a different type of recommendation that is still useful and appreciated by the user. 
+
 Url to Dataset: https://www.kaggle.com/yamaerenay/spotify-dataset-19212020-160k-tracks
 
 ###############################################################################################################################################################################
