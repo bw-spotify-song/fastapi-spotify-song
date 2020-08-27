@@ -1,7 +1,8 @@
-# import logging
+import logging
 from fastapi import APIRouter
-from .fedata import *
+# from api.fedata import *
 import joblib
+import pandas as pd
 
 
 FILENAME = "./app/api/Heroku_test.joblib"
@@ -38,6 +39,11 @@ async def predict(id: str):
         return list(new_df.loc[new_obs, 'id'])
 
     tracks = predict_model(track_id= id, new_df=df, knn=knn)
+
+    # Static Track Ids to test functionality
+    # static_id1 = '4KuFgXbahxEILwg8qu1kKG'
+    # static_id2 = '01LLSAYjBA6VbyzGnERWMU'
+
 
     return {
          'Suggested track IDs': tracks

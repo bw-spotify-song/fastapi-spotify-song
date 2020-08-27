@@ -5,7 +5,7 @@ from sqlalchemy import Column, Integer, String
 from sqlalchemy.types import Date, Float
 import csv
 import datetime
-import psycopg2
+# import psycopg2
 from .settings import DATABASE_URL
 
 engine = create_engine(DATABASE_URL)
