@@ -1,19 +1,17 @@
 from fastapi import APIRouter, HTTPException
 import pandas as pd
 import plotly.express as px
+from .predict import df
 router = APIRouter()
+
+new_df = df.copy()
 
 FILENAME = "./app/api/BW_Spotify_Final.joblib"
 csv_url = "./app/api/BW_Spotify_Final.csv"
 
 
-
-
-
-
-
-@router.get('/viz/{Radar Chart}')
-async def viz(track_id: str):
+@router.get('/viz/{track_id}')
+async def feature_average(track_id: str):
     """
     Visualize state unemployment rate from [Federal Reserve Economic Data](https://fred.stlouisfed.org/) 📈
     
@@ -24,11 +22,11 @@ async def viz(track_id: str):
     ### Response
     JSON string to render with [react-plotly.js](https://plotly.com/javascript/react/)
     """
-def feature_average(track_id):
+# def feature_average(track_id):
     '''
     This function returns the sum of the features for the ten recommended songs.
     '''
-    similar_tracks = predict(track_id)
+    similar_tracks = predict_model(track_id, new_df, knn)
     # Return a dataframe with only the ten most similar tracks
     similar_tracks = new_df[new_df["id"].isin(similar_tracks)]
     similar_tracks = similar_tracks[['acousticness', 'danceability',
@@ -72,7 +70,8 @@ def feature_average(track_id):
 
       # Make Plotly figure
     fig = px.line_polar(r=r, theta=attributes, line_close=True)
-    fig.update_traces(fill='toself')
-    fig.show()
+    # fig.update_traces(fill='toself')
+    # fig.show()
+
     # Return Plotly figure as JSON string
     return fig.to_json()
