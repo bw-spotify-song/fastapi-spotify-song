@@ -40,7 +40,7 @@ To build a functioning application programming interface and machine learning mo
 - [SciKit-Learn](https://scikit-learn.org/stable/getting_started.html): Simple and efficient tools for predictive data analysis.
 - [Pandas](https://pandas.pydata.org/docs/getting_started/index.html): Pandas is an open source, BSD-licensed library providing high-performance, easy-to-use data structures and data analysis tools for the Python programming language.
 
-## Project Goals (Tailor)
+## Project Goals
 
 Describe the established data source with at least rough data able to be provided on day one.
 
@@ -58,7 +58,7 @@ Determine the targeted output to deliver to the Web/UX/iOS teams. Ensure JSON fo
 
 A: The Spotify API already outputs search requests as JSON, which our Data Engineer plans to flatten for ease of data analysis. We plan to change this back to Python via a Flask app when we return it to the backend team.
 
-## Audio Features (Complete)
+## Audio Features
 
 - Acoustics (Confidence levels ranging from 0.0 to 1.0. 1.0 represents high confidence the track is acoustic.)
 
