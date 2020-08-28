@@ -1,9 +1,11 @@
 # Data Science Build Week [[  DRAFT  ]]
-Data Set: Sample from * Kaggle Spotify Dataset 1912-2020, 160k Tracks
+Data Set: Kaggle Spotify Dataset 1912-2020, 160k Tracks
 
 Model Type: K-nearest neighbors 
 
 Target: Song ID’s
+
+#### Teams
 - DS_16 Machine Learning
 - DS_17 Data Engineering
 
@@ -19,7 +21,6 @@ Content:
 - [Deploying to Heroku](#deploying-to-heroku)
 - [Example: Data visualization](#example-data-visualization)
 - [Example: Machine learning](#example-machine-learning)
-- [More instructions](#more-instructions)
 - [Color Scheme](#color-scheme)
 
 ## Product Vision
@@ -98,17 +99,17 @@ Further research: We have begun working on applying text classification to the l
 
 ## Big Picture
 
-Here's a template with starter code to deploy an API for your machine learning model and data visualizations.  You're encouraged (but not required) to use this template for your Build Week.
+Here's a template with starter code to deploy an API for your machine learning model and data visualizations.  
 
 You can deploy on Heroku in 10 minutes. Here's the template deployed as-is: [https://ds-bw-test.herokuapp.com/](https://ds-bw-test.herokuapp.com/)
 
-This diagram shows two different ways to use frameworks like Flask. Both ways are good! The first way is what you learned in DS Unit 3. The second way is more common in Build Weeks & Labs. 
+This diagram shows two different ways to use frameworks like Flask. 
 
 ![](https://user-images.githubusercontent.com/7278219/87967396-5a6fed80-ca84-11ea-902a-890cfa6115d3.png)
 
-Instead of Flask, we'll use FastAPI. It's similar, but faster, with automatic interactive docs. For more comparison, see [FastAPI for Flask Users](https://amitness.com/2020/06/fastapi-vs-flask/).
+Instead of Flask, use FastAPI. It's similar, but faster, with automatic interactive docs. For more comparison, see [FastAPI for Flask Users](https://amitness.com/2020/06/fastapi-vs-flask/).
 
-You'll build and deploy a Data Science API. You'll work cross-functionally with your Web teammates to connect your API to a full-stack web app!
+Build and deploy a Data Science API. May need to work cross-functionally with a Web teammate to connect the API to a full-stack web app!
 
 ![](https://user-images.githubusercontent.com/7278219/87967579-a4f16a00-ca84-11ea-9f90-886b3cf1a25c.png)
 
@@ -138,11 +139,11 @@ Launch the app
 uvicorn app.main:app --reload
 ```
 
-Go to `localhost:8000` in your browser.
+Go to `localhost:8000` in the browser.
 
 ![image](https://user-images.githubusercontent.com/7278219/87965040-c18ba300-ca80-11ea-894f-d51a69d52f8a.png)
 
-You'll see your API documentation:
+You'll see the API documentation:
 
 - Your app's title, "DS API"
 - Your description, "Lorem ipsum"
@@ -194,7 +195,7 @@ You'll see the server response, including:
         └── test_viz.py
 ```
 
-`app/main.py` is where you edit your app's title and description, which are displayed at the top of the your automatically generated documentation. This file also configures "Cross-Origin Resource Sharing", which you shouldn't need to edit. 
+`app/main.py` is where you edit the app's title and description, which are displayed at the top of the automatically generated documentation. This file also configures "Cross-Origin Resource Sharing", which you shouldn't need to edit. 
 
 - [FastAPI docs - First Steps](https://fastapi.tiangolo.com/tutorial/first-steps/)
 - [FastAPI docs - Metadata](https://fastapi.tiangolo.com/tutorial/metadata/)
@@ -205,7 +206,7 @@ You'll see the server response, including:
 - [Scikit-learn docs - Model persistence](https://scikit-learn.org/stable/modules/model_persistence.html)
 - [Keras docs - Serialization and saving](https://keras.io/guides/serialization_and_saving/)
 
-When your API receives a POST request, FastAPI automatically parses and validates the request body JSON, using the `Item` class attributes and functions. Edit this class so it's consistent with the column names and types from your training dataframe. 
+When the API receives a POST request, FastAPI automatically parses and validates the request body JSON, using the `Item` class attributes and functions. Edit this class so it's consistent with the column names and types from the training dataframe. 
 
 - [FastAPI docs - Request Body](https://fastapi.tiangolo.com/tutorial/body/)
 - [FastAPI docs - Field additional arguments](https://fastapi.tiangolo.com/tutorial/schema-extra-example/#field-additional-arguments)
@@ -217,11 +218,11 @@ When your API receives a POST request, FastAPI automatically parses and validate
 
 ![react-plotly.js animation](https://media.giphy.com/media/j3QG8qVBQcpKvCfO3T/giphy.gif)
 
-- [Lambda School docs - Data visualization with React & Plotly](https://github.com/Lambda-School-Labs/labs-spa-starter/tree/main/src/components/pages/ExampleDataViz). This is the code for the example above. Your web teammates can reuse this as-is.
+- [Lambda School docs - Data visualization with React & Plotly](https://github.com/Lambda-School-Labs/labs-spa-starter/tree/main/src/components/pages/ExampleDataViz). This is the code for the example above. Your web teammate(s) can reuse this as-is.
 - [Plotly docs](https://plotly.com/python/)
 
 
-`app/tests/test_*.py` is where you edit your pytest unit tests. 
+`app/tests/test_*.py` is where you edit the pytest unit tests. 
 
 - [FastAPI docs - Testing](https://fastapi.tiangolo.com/tutorial/testing/)
 - [calmcode.io videos - FastAPI - Testing](https://calmcode.io/fastapi/testing-one.html)
@@ -289,7 +290,7 @@ exit
 
 ## Example: Data Visualization
 
-Teams are recommended to use [Plotly](https://plotly.com/python/), a popular visualization library for both Python & JavaScript.
+Recommended: Use [Plotly](https://plotly.com/python/), a popular visualization library for both Python & JavaScript.
 
 Follow the [getting started](#getting-started) instructions.
 
@@ -304,7 +305,7 @@ app = FastAPI(
 )
 ```
 
-Prototype your visualization in a notebook.
+Prototype the visualization in a notebook.
 
 ```python
 import plotly.express as px
@@ -323,9 +324,9 @@ fig = px.line(subset, x='Year', y=metric, title=f'{metric} in {country}')
 fig.show()
 ```
 
-Define a function for your visualization. End with `return fig.to_json()`
+Define a function for the visualization. End with `return fig.to_json()`
 
-Then edit `app/api/viz.py` to add your code.
+Then edit `app/api/viz.py` to add the code.
 
 ```python
 import plotly.express as px
@@ -356,7 +357,7 @@ async def worldviz(metric, country):
 
 Test locally, then [deploy to Heroku](#deploying-to-heroku). 
 
-Your web teammates will re-use the [data viz code & docs in our `labs-spa-starter` repo](https://github.com/Lambda-School-Labs/labs-spa-starter/tree/main/src/components/pages/ExampleDataViz). The web app will call the DS API to get the data, then use `react-plotly.js` to render the visualization. 
+Your web teammates can re-use the [data viz code & docs in our `labs-spa-starter` repo](https://github.com/Lambda-School-Labs/labs-spa-starter/tree/main/src/components/pages/ExampleDataViz). The web app will call the DS API to get the data, then use `react-plotly.js` to render the visualization. 
 
 #### Plotly Python Docs
 - [Example gallery](https://plotly.com/python/)
@@ -386,7 +387,7 @@ app = FastAPI(
 )
 ```
 
-Edit `app/api/predict.py` to add a docstring for your predict function and return a naive baseline. 
+Edit `app/api/predict.py` to add a docstring for the predict function and return a naive baseline. 
 
 ```python
 @router.post('/predict')
@@ -396,7 +397,7 @@ async def predict(item: Item):
     return {'predicted_price': y_pred}
 ```
 
-In a notebook, explore your data. Make an educated guess of what features you'll use.
+In a notebook, explore the data. Make an educated guess of what features you could use.
 
 ```python
 import pandas as pd
@@ -421,7 +422,7 @@ X.describe()
 features = ['bedrooms', 'total_rooms', 'house_age']
 ```
 
-Edit the class in `app/api/predict.py` to use your features.
+Edit the class in `app/api/predict.py` to use the features.
 
 ```python
 class House(BaseModel):
@@ -442,23 +443,18 @@ async def predict(house: House):
     return {'predicted_price': y_pred}
 ```
 
-Test locally, then [deploy to Heroku](#deploying-to-heroku) with your work-in-progress. Get to this point by the middle of Build Week. (By Wednesday lunch for full-time cohorts. By end of week one for part-time cohorts.) Now your web teammates can make POST requests to your API endpoint.
+Test locally, then [deploy to Heroku](#deploying-to-heroku) with the work-in-progress. Now your web teammates can make POST requests to the API endpoint.
 
-In a notebook, train your pipeline and pickle it. See these docs:
+In a notebook, train the pipeline and pickle it. See these docs:
 
 - [Scikit-learn docs - Model persistence](https://scikit-learn.org/stable/modules/model_persistence.html)
 - [Keras docs - Serialization and saving](https://keras.io/guides/serialization_and_saving/)
 
-Get version numbers for every package you used in your pipeline. [Install the exact versions of these packages](#more-instructions) in your virtual environment.
+Get version numbers for every package you used in the pipeline. [Install the exact versions of these packages](#more-instructions) in your virtual environment.
 
-Edit `app/api/predict.py` to unpickle your model and use it in your predict function. 
+Edit `app/api/predict.py` to unpickle the model and use it in your predict function. 
 
 Now you are ready to re-deploy! 🚀
-
-
-## More Instructions (tailor)
-
-sdfgdfgdfgdf
 
 ## Color Scheme
 
