@@ -43,15 +43,19 @@ To build a functioning application programming interface and machine learning mo
 ## Project Goals (Tailor)
 
 Describe the established data source with at least rough data able to be provided on day one.
+
 A: List of songs, basic info about songs, song name, artist, album, length of song, genre, general classification/categorization, number of plays, indicator of how much you might like song
 
 Write a description for what the data science problem is. Discover an uncertainty and/or a prediction. Use the data to find a solution to this problem.
+
 A: The Data Science team aims to solve the problem of inadequate or inaccurate predictions of songs that the user might enjoy. Current models do not seem to be super effective -- a large portion of our team does not enjoy ~30% of their Discovery Weekly playlist, and we aim to minimize that number (aiming for ~20%)
 
 Create a good song suggestion. Determine how we know the suggestion was good. Determine whether the user would like it or add it to playlist of any kind.
+
 A: From our team's personal experience, listening to a song all the way through without skipping is generally the best indication of whether a song was a good prediction or not. Adding a song to a playlist or liking a song can give an indication about a particularly good suggestion, but we've discovered that most users are not likely to do this on "good suggestions" only "really good suggestions".
 
 Determine the targeted output to deliver to the Web/UX/iOS teams. Ensure JSON format or requested output format is used.
+
 A: The Spotify API already outputs search requests as JSON, which our Data Engineer plans to flatten for ease of data analysis. We plan to change this back to Python via a Flask app when we return it to the backend team.
 
 ## Audio Features (Complete)
