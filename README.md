@@ -1,25 +1,45 @@
 # Data Science Build Week [[  DRAFT  ]]
+Data Set: Sample from * Kaggle Spotify Dataset 1912-2020, 160k Tracks
+
+Model Type: K-nearest neighbors 
+
+Target: Song ID’s
 - DS_16 Machine Learning
 - DS_17 Data Engineering
 
-Data Set: Sample from * Kaggle Spotify Dataset 1912-2020, 160k Tracks
-Model Type: K-nearest neighbors 
-Target: Song ID’s
 
-- [Product Vision](#ds-product-vision)
+Content:
+- [Product Vision](#product-vision)
+- [Tech Stack](#teck-stack)
 - [Project Goals](#project-goals)
+- [Audio Features](#audio-features)
 - [Getting started](#getting-started)
 - [File structure](#file-structure)
 - [More instructions](#more-instructions)
 - [Deploying to Heroku](#deploying-to-heroku)
 - [Example: Data visualization](#example-data-visualization)
 - [Example: Machine learning](#example-machine-learning)
+- [More instructions](#more-instructions)
+- [Color Scheme](#color-scheme)
 
-## DS PRODUCT VISION
+## Product Vision
 
-To build a functioning application programming interface and machine learning model to be used in a full-stack enviroment capable of recieving GET requests and outputting POST requests. 
+To build a functioning application programming interface and machine learning model to be used in a full-stack enviroment capable of recieving front-end GET requests and outputting POST requests to back-end. 
 
-## Project Goals: (Tailor)
+## Tech stack
+- [FastAPI](https://fastapi.tiangolo.com/): Web framework. Like Flask, but faster, with automatic interactive docs.
+- [Flake8](https://flake8.pycqa.org/en/latest/): Linter, enforces PEP8 style guide.
+- [Heroku](https://devcenter.heroku.com/): Platform as a service, hosts your API.
+- [Pipenv](https://pipenv.pypa.io/en/latest/): Reproducible virtual environment, manages dependencies.
+- [Plotly](https://plotly.com/python/): Visualization library, for Python & JavaScript.
+- [Pytest](https://docs.pytest.org/en/stable/): Testing framework, runs your unit tests.
+- [Uvicorn](https://www.uvicorn.org/#quickstart): Uvicorn is a lightning-fast ASGI server, built on uvloop and httptools.
+- [SQLAlchemy](https://www.sqlalchemy.org/): SQLAlchemy is the Python SQL toolkit and Object Relational Mapper that gives application developers the full power and flexibility of SQL.
+- [Spotipy](https://spotipy.readthedocs.io/en/2.13.0/): (Not designed in structure of project) Spotipy is a lightweight Python library for the Spotify Web API. With Spotipy you get full access to all of the music data provided by the Spotify platform.
+- [SciKit-Learn](https://scikit-learn.org/stable/getting_started.html): Simple and efficient tools for predictive data analysis.
+- [Pandas](https://pandas.pydata.org/docs/getting_started/index.html): Pandas is an open source, BSD-licensed library providing high-performance, easy-to-use data structures and data analysis tools for the Python programming language.
+
+## Project Goals (Tailor)
 
 Q: Describe the established data source with at least rough data able to be provided on day one.
 A: List of songs, basic info about songs, song name, artist, album, length of song, genre, general classification/categorization, number of plays, indicator of how much you might like song
@@ -33,7 +53,7 @@ A: From our team's personal experience, listening to a song all the way through 
 Q: What kind of target output can you deliver to the Web/UX/iOS teams to work with? Is it in JSON format or something else?
 A: The Spotify API already outputs search requests as JSON, which our Data Engineer plans to flatten for ease of data analysis. We plan to change this back to Python via a Flask app when we return it to the backend team.
 
-## Audio Features: (Complete)
+## Audio Features (Complete)
 
 - Acoustics (Confidence levels ranging from 0.0 to 1.0. 1.0 represents high confidence the track is acoustic.)
 
@@ -76,31 +96,7 @@ Further research: We have begun working on applying text classification to the l
 * Spotify Audio Features: https://developer.spotify.com/documentation/web-api/reference/tracks/get-audio-features/
 * Genre definition: https://en.wikipedia.org/wiki/Music_genre
 
-## Getting started (tailor)
-
-asdfsdfgsdfgsdfsdfsdf
-
-### Color Scheme:
-
-Background color: #D4F779
-Text-color: Black
-Footer and Header Text Color: #F22FA5
-Font: Circular --- be sure to import and specify in font-family, can be found here or here. Alternatively, the path is CircularStd-Bold.otf
-Logo: can be found here. The path is assets/vinyl-logo-512-pink.png/
-###############################################################################################################################################################################
-[[  Need to edit the table of contents  ]]
-
-- [Big picture](#big-picture)
-- [Tech stack](#tech-stack)
-- [Getting started](#getting-started)
-- [File structure](#file-structure)
-- [More instructions](#more-instructions)
-- [Deploying to Heroku](#deploying-to-heroku)
-- [Example: Data visualization](#example-data-visualization)
-- [Example: Machine learning](#example-machine-learning)
-
-###############################################################################################################################################################################
-## Big picture
+## Big Picture
 
 Here's a template with starter code to deploy an API for your machine learning model and data visualizations.  You're encouraged (but not required) to use this template for your Build Week.
 
@@ -116,15 +112,7 @@ You'll build and deploy a Data Science API. You'll work cross-functionally with 
 
 ![](https://user-images.githubusercontent.com/7278219/87967579-a4f16a00-ca84-11ea-9f90-886b3cf1a25c.png)
 
-## Tech stack
-- [FastAPI](https://fastapi.tiangolo.com/): Web framework. Like Flask, but faster, with automatic interactive docs.
-- [Flake8](https://flake8.pycqa.org/en/latest/): Linter, enforces PEP8 style guide.
-- [Heroku](https://devcenter.heroku.com/): Platform as a service, hosts your API.
-- [Pipenv](https://pipenv.pypa.io/en/latest/): Reproducible virtual environment, manages dependencies.
-- [Plotly](https://plotly.com/python/): Visualization library, for Python & JavaScript.
-- [Pytest](https://docs.pytest.org/en/stable/): Testing framework, runs your unit tests.
-
-## Getting started
+## Getting Started
 
 [Create a new repository from this template.](https://github.com/Lambda-School-Labs/ds-bw/generate)
 
@@ -188,7 +176,7 @@ You'll see the server response, including:
 
 ***Your job is to replace these random predictions with real predictions from your model.*** Use this starter code and documentation to deploy your model as an API!
 
-## File structure
+## File Structure
 
 ```
 .
@@ -239,7 +227,7 @@ When your API receives a POST request, FastAPI automatically parses and validate
 - [calmcode.io videos - FastAPI - Testing](https://calmcode.io/fastapi/testing-one.html)
 - [calmcode.io videos - pytest](https://calmcode.io/pytest/introduction.html)
 
-## More instructions
+## More Instructions
 
 Activate the virtual environment
 ```
@@ -299,7 +287,7 @@ Deactivate the virtual environment
 exit
 ```
 
-## Example: Data visualization
+## Example: Data Visualization
 
 Teams are recommended to use [Plotly](https://plotly.com/python/), a popular visualization library for both Python & JavaScript.
 
@@ -370,20 +358,20 @@ Test locally, then [deploy to Heroku](#deploying-to-heroku).
 
 Your web teammates will re-use the [data viz code & docs in our `labs-spa-starter` repo](https://github.com/Lambda-School-Labs/labs-spa-starter/tree/main/src/components/pages/ExampleDataViz). The web app will call the DS API to get the data, then use `react-plotly.js` to render the visualization. 
 
-#### Plotly Python docs
+#### Plotly Python Docs
 - [Example gallery](https://plotly.com/python/)
 - [Setting Graph Size](https://plotly.com/python/setting-graph-size/)
 - [Styling Plotly Express Figures](https://plotly.com/python/styling-plotly-express/)
 - [Text and font styling](https://plotly.com/python/v3/font/)
 - [Theming and templates](https://plotly.com/python/templates/)
 
-#### Plotly JavaScript docs
+#### Plotly JavaScript Docs
 - [Lambda `labs-spa-starter` data viz code & docs](https://github.com/Lambda-School-Labs/labs-spa-starter/tree/main/src/components/pages/ExampleDataViz)
 - [Example gallery](https://plotly.com/javascript/)
 - [Fundamentals](https://plotly.com/javascript/plotly-fundamentals/)
 - [react-plotly.js](https://plotly.com/javascript/react/)
 
-## Example: Machine learning
+## Example: Machine Learning
 
 Follow the [getting started](#getting-started) instructions.
 
@@ -466,3 +454,16 @@ Get version numbers for every package you used in your pipeline. [Install the ex
 Edit `app/api/predict.py` to unpickle your model and use it in your predict function. 
 
 Now you are ready to re-deploy! 🚀
+
+
+## More Instructions (tailor)
+
+sdfgdfgdfgdf
+
+## Color Scheme
+
+Background color: #D4F779
+Text-color: Black
+Footer and Header Text Color: #F22FA5
+Font: Circular --- be sure to import and specify in font-family, can be found here or here. Alternatively, the path is CircularStd-Bold.otf
+Logo: can be found here. The path is assets/vinyl-logo-512-pink.png/
