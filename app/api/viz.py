@@ -1,32 +1,34 @@
 from fastapi import APIRouter, HTTPException
 import pandas as pd
 import plotly.express as px
-from .predict import df
+import joblib
+from .predict import FILENAME, csv_url
+
 router = APIRouter()
 
-new_df = df.copy()
 
-FILENAME = "./app/api/BW_Spotify_Final.joblib"
-csv_url = "./app/api/BW_Spotify_Final.csv"
+# Import the prediction model
+knn = joblib.load(FILENAME)
+new_df = pd.read_csv(csv_url)
+# track_id = new_df['id'][0]
 
 
-@router.get('/viz/{track_id}')
-async def feature_average(track_id: str):
-    """
-    Visualize state unemployment rate from [Federal Reserve Economic Data](https://fred.stlouisfed.org/) 📈
-    
-    ### Path Parameter
-    `statecode`: The [USPS 2 letter abbreviation](https://en.wikipedia.org/wiki/List_of_U.S._state_and_territory_abbreviations#Table) 
-    (case insensitive) for any of the 50 states or the District of Columbia.
+# Comes from the colab file containing the prediction model
+def predict_model(track_id):
 
-    ### Response
-    JSON string to render with [react-plotly.js](https://plotly.com/javascript/react/)
-    """
-# def feature_average(track_id):
+    obs = new_df.index[new_df['id'] == track_id]
+    series = new_df.iloc[obs, 5:].to_numpy()
+
+    neighbors = knn.kneighbors(series)
+    new_obs = neighbors[1][0][6:57]
+    return list(new_df.loc[new_obs, 'id'])
+
+
+def feature_average(track_id):
     '''
     This function returns the sum of the features for the ten recommended songs.
     '''
-    similar_tracks = predict_model(track_id, new_df, knn)
+    similar_tracks = predict_model(track_id)
     # Return a dataframe with only the ten most similar tracks
     similar_tracks = new_df[new_df["id"].isin(similar_tracks)]
     similar_tracks = similar_tracks[['acousticness', 'danceability',
@@ -56,6 +58,10 @@ async def feature_average(track_id: str):
     for attribute in attributes:
         features.append(attribute)
     return features
+
+
+@router.get('/viz/{track_id}')
+async def viz(track_id: str):
     r = feature_average(track_id)
     attributes = [
         'acousticness',
@@ -66,12 +72,10 @@ async def feature_average(track_id: str):
         'speechiness',
         'valence']
 
-
-
-      # Make Plotly figure
+    # Make Plotly figure
     fig = px.line_polar(r=r, theta=attributes, line_close=True)
-    # fig.update_traces(fill='toself')
+    fig.update_traces(fill='toself')
     # fig.show()
-
+    # fig.to_json()
     # Return Plotly figure as JSON string
     return fig.to_json()
