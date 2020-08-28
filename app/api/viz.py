@@ -77,4 +77,4 @@ async def viz(track_id: str):
     fig.update_traces(fill='toself')
     # fig.show()
     # fig.to_json()
-    return fig.to_json(), fig.show()
+    return fig.to_json()

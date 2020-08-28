@@ -191,7 +191,7 @@ def readmedoc():
     Go to `localhost:8000` in the browser.
 
     """
-    return README.md
+    return
 
 @app.get("/Database")
 def db_reload():
