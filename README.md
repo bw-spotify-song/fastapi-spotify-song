@@ -12,15 +12,15 @@ Target: Song ID’s
 
 Content:
 - [Product Vision](#product-vision)
-- [Tech Stack](#teck-stack)
+- [Tech Stack](#tech-stack)
 - [Project Goals](#project-goals)
 - [Audio Features](#audio-features)
 - [Getting started](#getting-started)
-- [File structure](#file-structure)
-- [More instructions](#more-instructions)
+- [File Structure](#file-structure)
+- [More Instructions](#more-instructions)
 - [Deploying to Heroku](#deploying-to-heroku)
-- [Example: Data visualization](#example-data-visualization)
-- [Example: Machine learning](#example-machine-learning)
+- [Example: Data Visualization](#example-data-visualization)
+- [Example: Machine Learning](#example-machine-learning)
 - [Color Scheme](#color-scheme)
 
 ## Product Vision
