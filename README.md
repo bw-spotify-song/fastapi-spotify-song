@@ -1,25 +1,26 @@
-# Data Science Build Week [[  DRAFT  ]]
-Data Set: Sample from * Kaggle Spotify Dataset 1912-2020, 160k Tracks
+# Data Science Build Week [[  Final DRAFT  ]]
+Data Set: Kaggle Spotify Dataset 1912-2020, 160k Tracks
 
 Model Type: K-nearest neighbors 
 
 Target: Song ID’s
+
+#### Teams
 - DS_16 Machine Learning
 - DS_17 Data Engineering
 
 
 Content:
 - [Product Vision](#product-vision)
-- [Tech Stack](#teck-stack)
+- [Tech Stack](#tech-stack)
 - [Project Goals](#project-goals)
 - [Audio Features](#audio-features)
 - [Getting started](#getting-started)
-- [File structure](#file-structure)
-- [More instructions](#more-instructions)
+- [File Structure](#file-structure)
+- [More Instructions](#more-instructions)
 - [Deploying to Heroku](#deploying-to-heroku)
-- [Example: Data visualization](#example-data-visualization)
-- [Example: Machine learning](#example-machine-learning)
-- [More instructions](#more-instructions)
+- [Example: Data Visualization](#example-data-visualization)
+- [Example: Machine Learning](#example-machine-learning)
 - [Color Scheme](#color-scheme)
 
 ## Product Vision
@@ -39,21 +40,25 @@ To build a functioning application programming interface and machine learning mo
 - [SciKit-Learn](https://scikit-learn.org/stable/getting_started.html): Simple and efficient tools for predictive data analysis.
 - [Pandas](https://pandas.pydata.org/docs/getting_started/index.html): Pandas is an open source, BSD-licensed library providing high-performance, easy-to-use data structures and data analysis tools for the Python programming language.
 
-## Project Goals (Tailor)
+## Project Goals
 
-Q: Describe the established data source with at least rough data able to be provided on day one.
+Describe the established data source with at least rough data able to be provided on day one.
+
 A: List of songs, basic info about songs, song name, artist, album, length of song, genre, general classification/categorization, number of plays, indicator of how much you might like song
 
-Q: Write a description for what the data science problem is. What uncertainty or prediction are you trying to discover? How could this data be used to find a solution to this problem?
+Write a description for what the data science problem is. Discover an uncertainty and/or a prediction. Use the data to find a solution to this problem.
+
 A: The Data Science team aims to solve the problem of inadequate or inaccurate predictions of songs that the user might enjoy. Current models do not seem to be super effective -- a large portion of our team does not enjoy ~30% of their Discovery Weekly playlist, and we aim to minimize that number (aiming for ~20%)
 
-Q: What's in a good song suggestion? How do we know the suggestion was good? Did the user like it or add it to playlist of any kind?
+Create a good song suggestion. Determine how we know the suggestion was good. Determine whether the user would like it or add it to playlist of any kind.
+
 A: From our team's personal experience, listening to a song all the way through without skipping is generally the best indication of whether a song was a good prediction or not. Adding a song to a playlist or liking a song can give an indication about a particularly good suggestion, but we've discovered that most users are not likely to do this on "good suggestions" only "really good suggestions".
 
-Q: What kind of target output can you deliver to the Web/UX/iOS teams to work with? Is it in JSON format or something else?
+Determine the targeted output to deliver to the Web/UX/iOS teams. Ensure JSON format or requested output format is used.
+
 A: The Spotify API already outputs search requests as JSON, which our Data Engineer plans to flatten for ease of data analysis. We plan to change this back to Python via a Flask app when we return it to the backend team.
 
-## Audio Features (Complete)
+## Audio Features
 
 - Acoustics (Confidence levels ranging from 0.0 to 1.0. 1.0 represents high confidence the track is acoustic.)
 
@@ -89,7 +94,8 @@ https://itknowledgeexchange.techtarget.com/overheard/files/2016/11/URI.png.)
 
 Reason for using K-nearest neighbors: We chose to work with nearest neighbors because of its ability to cluster observations around common features. Since we were working a tabular dataset it seemed best to avoid any type of neural networks. There was also no need to apply any NLP techniques because there was justifiable reason to use it on any of the columns that contained text. Instead we dummy encoded the genres because most songs had multiple genres/sub genres. 
 
-Results:  We were able to pull an array of similar song suggestions when we would input a single song ID. 
+Results:  We were able to pull an array of similar song suggestions when we would input a single song ID.
+
 Further research: We have begun working on applying text classification to the lyrics of the songs to see if we can get a different type of recommendation that is still useful and appreciated by the user. 
 
 * Spotify Kaggle Dataset: https://www.kaggle.com/yamaerenay/spotify-dataset-19212020-160k-tracks
@@ -98,17 +104,17 @@ Further research: We have begun working on applying text classification to the l
 
 ## Big Picture
 
-Here's a template with starter code to deploy an API for your machine learning model and data visualizations.  You're encouraged (but not required) to use this template for your Build Week.
+Here's a template with starter code to deploy an API for your machine learning model and data visualizations.  
 
 You can deploy on Heroku in 10 minutes. Here's the template deployed as-is: [https://ds-bw-test.herokuapp.com/](https://ds-bw-test.herokuapp.com/)
 
-This diagram shows two different ways to use frameworks like Flask. Both ways are good! The first way is what you learned in DS Unit 3. The second way is more common in Build Weeks & Labs. 
+This diagram shows two different ways to use frameworks like Flask. 
 
 ![](https://user-images.githubusercontent.com/7278219/87967396-5a6fed80-ca84-11ea-902a-890cfa6115d3.png)
 
-Instead of Flask, we'll use FastAPI. It's similar, but faster, with automatic interactive docs. For more comparison, see [FastAPI for Flask Users](https://amitness.com/2020/06/fastapi-vs-flask/).
+Instead of Flask, use FastAPI. It's similar, but faster, with automatic interactive docs. For more comparison, see [FastAPI for Flask Users](https://amitness.com/2020/06/fastapi-vs-flask/).
 
-You'll build and deploy a Data Science API. You'll work cross-functionally with your Web teammates to connect your API to a full-stack web app!
+Build and deploy a Data Science API. May need to work cross-functionally with a Web teammate to connect the API to a full-stack web app!
 
 ![](https://user-images.githubusercontent.com/7278219/87967579-a4f16a00-ca84-11ea-9f90-886b3cf1a25c.png)
 
@@ -138,11 +144,11 @@ Launch the app
 uvicorn app.main:app --reload
 ```
 
-Go to `localhost:8000` in your browser.
+Go to `localhost:8000` in the browser.
 
 ![image](https://user-images.githubusercontent.com/7278219/87965040-c18ba300-ca80-11ea-894f-d51a69d52f8a.png)
 
-You'll see your API documentation:
+You'll see the API documentation:
 
 - Your app's title, "DS API"
 - Your description, "Lorem ipsum"
@@ -194,7 +200,7 @@ You'll see the server response, including:
         └── test_viz.py
 ```
 
-`app/main.py` is where you edit your app's title and description, which are displayed at the top of the your automatically generated documentation. This file also configures "Cross-Origin Resource Sharing", which you shouldn't need to edit. 
+`app/main.py` is where you edit the app's title and description, which are displayed at the top of the automatically generated documentation. This file also configures "Cross-Origin Resource Sharing", which you shouldn't need to edit. 
 
 - [FastAPI docs - First Steps](https://fastapi.tiangolo.com/tutorial/first-steps/)
 - [FastAPI docs - Metadata](https://fastapi.tiangolo.com/tutorial/metadata/)
@@ -205,7 +211,7 @@ You'll see the server response, including:
 - [Scikit-learn docs - Model persistence](https://scikit-learn.org/stable/modules/model_persistence.html)
 - [Keras docs - Serialization and saving](https://keras.io/guides/serialization_and_saving/)
 
-When your API receives a POST request, FastAPI automatically parses and validates the request body JSON, using the `Item` class attributes and functions. Edit this class so it's consistent with the column names and types from your training dataframe. 
+When the API receives a POST request, FastAPI automatically parses and validates the request body JSON, using the `Item` class attributes and functions. Edit this class so it's consistent with the column names and types from the training dataframe. 
 
 - [FastAPI docs - Request Body](https://fastapi.tiangolo.com/tutorial/body/)
 - [FastAPI docs - Field additional arguments](https://fastapi.tiangolo.com/tutorial/schema-extra-example/#field-additional-arguments)
@@ -217,11 +223,11 @@ When your API receives a POST request, FastAPI automatically parses and validate
 
 ![react-plotly.js animation](https://media.giphy.com/media/j3QG8qVBQcpKvCfO3T/giphy.gif)
 
-- [Lambda School docs - Data visualization with React & Plotly](https://github.com/Lambda-School-Labs/labs-spa-starter/tree/main/src/components/pages/ExampleDataViz). This is the code for the example above. Your web teammates can reuse this as-is.
+- [Lambda School docs - Data visualization with React & Plotly](https://github.com/Lambda-School-Labs/labs-spa-starter/tree/main/src/components/pages/ExampleDataViz). This is the code for the example above. Your web teammate(s) can reuse this as-is.
 - [Plotly docs](https://plotly.com/python/)
 
 
-`app/tests/test_*.py` is where you edit your pytest unit tests. 
+`app/tests/test_*.py` is where you edit the pytest unit tests. 
 
 - [FastAPI docs - Testing](https://fastapi.tiangolo.com/tutorial/testing/)
 - [calmcode.io videos - FastAPI - Testing](https://calmcode.io/fastapi/testing-one.html)
@@ -289,7 +295,7 @@ exit
 
 ## Example: Data Visualization
 
-Teams are recommended to use [Plotly](https://plotly.com/python/), a popular visualization library for both Python & JavaScript.
+Recommended: Use [Plotly](https://plotly.com/python/), a popular visualization library for both Python & JavaScript.
 
 Follow the [getting started](#getting-started) instructions.
 
@@ -304,7 +310,7 @@ app = FastAPI(
 )
 ```
 
-Prototype your visualization in a notebook.
+Prototype the visualization in a notebook.
 
 ```python
 import plotly.express as px
@@ -323,9 +329,9 @@ fig = px.line(subset, x='Year', y=metric, title=f'{metric} in {country}')
 fig.show()
 ```
 
-Define a function for your visualization. End with `return fig.to_json()`
+Define a function for the visualization. End with `return fig.to_json()`
 
-Then edit `app/api/viz.py` to add your code.
+Then edit `app/api/viz.py` to add the code.
 
 ```python
 import plotly.express as px
@@ -356,7 +362,7 @@ async def worldviz(metric, country):
 
 Test locally, then [deploy to Heroku](#deploying-to-heroku). 
 
-Your web teammates will re-use the [data viz code & docs in our `labs-spa-starter` repo](https://github.com/Lambda-School-Labs/labs-spa-starter/tree/main/src/components/pages/ExampleDataViz). The web app will call the DS API to get the data, then use `react-plotly.js` to render the visualization. 
+Your web teammates can re-use the [data viz code & docs in our `labs-spa-starter` repo](https://github.com/Lambda-School-Labs/labs-spa-starter/tree/main/src/components/pages/ExampleDataViz). The web app will call the DS API to get the data, then use `react-plotly.js` to render the visualization. 
 
 #### Plotly Python Docs
 - [Example gallery](https://plotly.com/python/)
@@ -386,7 +392,7 @@ app = FastAPI(
 )
 ```
 
-Edit `app/api/predict.py` to add a docstring for your predict function and return a naive baseline. 
+Edit `app/api/predict.py` to add a docstring for the predict function and return a naive baseline. 
 
 ```python
 @router.post('/predict')
@@ -396,7 +402,7 @@ async def predict(item: Item):
     return {'predicted_price': y_pred}
 ```
 
-In a notebook, explore your data. Make an educated guess of what features you'll use.
+In a notebook, explore the data. Make an educated guess of what features you could use.
 
 ```python
 import pandas as pd
@@ -421,7 +427,7 @@ X.describe()
 features = ['bedrooms', 'total_rooms', 'house_age']
 ```
 
-Edit the class in `app/api/predict.py` to use your features.
+Edit the class in `app/api/predict.py` to use the features.
 
 ```python
 class House(BaseModel):
@@ -442,28 +448,27 @@ async def predict(house: House):
     return {'predicted_price': y_pred}
 ```
 
-Test locally, then [deploy to Heroku](#deploying-to-heroku) with your work-in-progress. Get to this point by the middle of Build Week. (By Wednesday lunch for full-time cohorts. By end of week one for part-time cohorts.) Now your web teammates can make POST requests to your API endpoint.
+Test locally, then [deploy to Heroku](#deploying-to-heroku) with the work-in-progress. Now your web teammates can make POST requests to the API endpoint.
 
-In a notebook, train your pipeline and pickle it. See these docs:
+In a notebook, train the pipeline and pickle it. See these docs:
 
 - [Scikit-learn docs - Model persistence](https://scikit-learn.org/stable/modules/model_persistence.html)
 - [Keras docs - Serialization and saving](https://keras.io/guides/serialization_and_saving/)
 
-Get version numbers for every package you used in your pipeline. [Install the exact versions of these packages](#more-instructions) in your virtual environment.
+Get version numbers for every package you used in the pipeline. [Install the exact versions of these packages](#more-instructions) in your virtual environment.
 
-Edit `app/api/predict.py` to unpickle your model and use it in your predict function. 
+Edit `app/api/predict.py` to unpickle the model and use it in your predict function. 
 
 Now you are ready to re-deploy! 🚀
-
-
-## More Instructions (tailor)
-
-sdfgdfgdfgdf
 
 ## Color Scheme
 
 Background color: #D4F779
+
 Text-color: Black
+
 Footer and Header Text Color: #F22FA5
+
 Font: Circular --- be sure to import and specify in font-family, can be found here or here. Alternatively, the path is CircularStd-Bold.otf
+
 Logo: can be found here. The path is assets/vinyl-logo-512-pink.png/
