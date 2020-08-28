@@ -463,7 +463,11 @@ Now you are ready to re-deploy! 🚀
 ## Color Scheme
 
 Background color: #D4F779
+
 Text-color: Black
+
 Footer and Header Text Color: #F22FA5
+
 Font: Circular --- be sure to import and specify in font-family, can be found here or here. Alternatively, the path is CircularStd-Bold.otf
+
 Logo: can be found here. The path is assets/vinyl-logo-512-pink.png/
