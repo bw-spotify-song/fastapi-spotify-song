@@ -77,5 +77,4 @@ async def viz(track_id: str):
     fig.update_traces(fill='toself')
     # fig.show()
     # fig.to_json()
-    # Return Plotly figure as JSON string
-    return fig.to_json()
+    return fig.show()
